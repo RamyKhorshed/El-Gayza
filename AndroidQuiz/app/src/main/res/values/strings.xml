@@ -4,4 +4,10 @@
     <string name="description">Description</string>
     <string name="play">Play</string>
     <string name="quit">Quit</string>
+    <string name="answer_4">Answer 4</string>
+    <string name="answer_3">Answer 3</string>
+    <string name="answer_2">Answer 2</string>
+    <string name="answer_1">Answer 1</string>
+    <string name="question">Question</string>
+    <string name="score">Score</string>
 </resources>
