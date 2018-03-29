@@ -47,8 +47,9 @@ public class Quiz extends AppCompatActivity {
                     mScore++;
                     score.setText(Integer.toString(mScore));
                     updateQuestion(n++);
-                    if(n >= qLength){
+                    if(n-1 >= qLength){
                         gameOver();
+                        finish();
                     }
                 } else {
                     gameOver();
@@ -64,8 +65,9 @@ public class Quiz extends AppCompatActivity {
                     mScore++;
                     score.setText(Integer.toString(mScore));
                     updateQuestion(n++);
-                    if(n >= qLength){
+                    if(n-1 >= qLength){
                         gameOver();
+                        finish();
                     }
                 } else {
                     gameOver();
@@ -81,8 +83,9 @@ public class Quiz extends AppCompatActivity {
                     mScore++;
                     score.setText(Integer.toString(mScore));
                     updateQuestion(n++);
-                    if(n >= qLength){
+                    if(n-1 >= qLength){
                         gameOver();
+                        finish();
                     }
                 } else {
                     gameOver();
@@ -98,8 +101,9 @@ public class Quiz extends AppCompatActivity {
                     mScore++;
                     score.setText(Integer.toString(mScore));
                     updateQuestion(n++);
-                    if(n >= qLength){
+                    if(n-1 >= qLength){
                         gameOver();
+                        finish();
                     }
                 } else {
                     gameOver();
