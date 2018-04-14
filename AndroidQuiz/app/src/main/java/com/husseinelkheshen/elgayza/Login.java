@@ -20,7 +20,7 @@ public class Login extends AppCompatActivity {
     private EditText email;
     private EditText password;
     private FirebaseAuth mAuth;
-    public FirebaseUser currentUser;
+    private FirebaseUser currentUser;
     private Button login, back;
 
     @Override
@@ -31,7 +31,6 @@ public class Login extends AppCompatActivity {
         email = findViewById(R.id.email);
         password = findViewById(R.id.password);
         mAuth = FirebaseAuth.getInstance();
-        currentUser = mAuth.getCurrentUser();
         login = findViewById(R.id.login);
         back = findViewById(R.id.back);
 
