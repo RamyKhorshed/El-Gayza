@@ -1,4 +1,4 @@
-package com.husseinelkheshen.quiz;
+package com.husseinelkheshen.elgayza;
 
 import org.junit.Test;
 

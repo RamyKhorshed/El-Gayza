@@ -1,4 +1,4 @@
-package com.husseinelkheshen.quiz;
+package com.husseinelkheshen.elgayza;
 
 import android.content.Intent;
 import android.support.annotation.NonNull;
@@ -20,9 +20,8 @@ public class Login extends AppCompatActivity {
     private EditText email;
     private EditText password;
     private FirebaseAuth mAuth;
-    private FirebaseUser currentUser;
-    private Button login;
-    private Button back;
+    public FirebaseUser currentUser;
+    private Button login, back;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,7 +68,7 @@ public class Login extends AppCompatActivity {
                             startActivity(new Intent(getApplicationContext(),
                                     Menu.class));
                         }else {
-                            Toast.makeText(Login.this, "couldn't login",
+                            Toast.makeText(Login.this, "Login Failed",
                                     Toast.LENGTH_SHORT).show();
                         }
                     }

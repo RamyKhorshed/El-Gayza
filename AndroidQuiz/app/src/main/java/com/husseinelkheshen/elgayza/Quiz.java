@@ -1,4 +1,4 @@
-package com.husseinelkheshen.quiz;
+package com.husseinelkheshen.elgayza;
 
 import android.annotation.SuppressLint;
 import android.content.DialogInterface;

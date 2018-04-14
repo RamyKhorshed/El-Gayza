@@ -1,4 +1,4 @@
-package com.husseinelkheshen.quiz;
+package com.husseinelkheshen.elgayza;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
