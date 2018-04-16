@@ -34,6 +34,8 @@ public class Quiz extends AppCompatActivity {
         answer3 = findViewById(R.id.answer3);
         answer4 = findViewById(R.id.answer4);
 
+
+
         score = findViewById(R.id.score);
         question = findViewById(R.id.question);
 
