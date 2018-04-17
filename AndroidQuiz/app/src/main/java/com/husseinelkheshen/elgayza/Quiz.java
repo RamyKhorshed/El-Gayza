@@ -10,6 +10,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.google.firebase.storage.FirebaseStorage;
+
 public class Quiz extends AppCompatActivity {
 
     Button answer1, answer2, answer3, answer4;
@@ -22,6 +24,8 @@ public class Quiz extends AppCompatActivity {
     private int mScore = 0;
     private int qLength = qObject.getLength();
 
+    private FirebaseStorage storage;
+
     int n = 0;
 
     @Override
@@ -33,6 +37,8 @@ public class Quiz extends AppCompatActivity {
         answer2 = findViewById(R.id.answer2);
         answer3 = findViewById(R.id.answer3);
         answer4 = findViewById(R.id.answer4);
+
+        storage = FirebaseStorage.getInstance();
 
         score = findViewById(R.id.score);
         question = findViewById(R.id.question);
