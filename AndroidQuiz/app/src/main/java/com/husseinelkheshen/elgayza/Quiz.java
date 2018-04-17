@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.VideoView;
 
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
@@ -48,6 +49,13 @@ public class Quiz extends AppCompatActivity {
 
         storage = FirebaseStorage.getInstance();
         database = FirebaseDatabase.getInstance();
+
+//        str = "Firebase";
+//
+//        VideoView videoview = findViewById(R.id.videoview);
+//        uri = Uri.parse(str);
+//        videoview.setVideoURI(uri);
+//        videoview.start();
 
         score = findViewById(R.id.score);
         question = findViewById(R.id.question);
@@ -125,6 +133,11 @@ public class Quiz extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    @Override
+    public void onBackPressed() {
+        return;
     }
 
     private void updateQuestion(int n) {
