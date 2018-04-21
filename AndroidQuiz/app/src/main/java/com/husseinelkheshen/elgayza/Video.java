@@ -21,14 +21,14 @@ public class Video extends AppCompatActivity {
 
         storage = FirebaseStorage.getInstance();
 
-        str = "Firebase";
+        str = "https://firebasestorage.googleapis.com/v0/b/el-gayza.appspot.com/o/Sample.mp4?alt=media&token=f4d383a4-174a-45f7-a12b-5b7ad57b4883";
 
-        VideoView videoview = findViewById(R.id.videoView);
+        VideoView video = findViewById(R.id.videoView);
         uri = Uri.parse(str);
-        videoview.setVideoURI(uri);
-        videoview.start();
+        video.setVideoURI(uri);
+        video.start();
 
-        finish();
+
     }
 
     @Override
