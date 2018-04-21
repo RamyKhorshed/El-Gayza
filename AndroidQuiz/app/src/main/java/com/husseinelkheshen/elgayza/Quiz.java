@@ -27,11 +27,7 @@ public class Quiz extends AppCompatActivity {
     private int mScore = 0;
     private int qLength = qObject.getLength();
 
-    private FirebaseStorage storage;
     private FirebaseDatabase database;
-
-    String str;
-    Uri uri;
 
     int n = 0;
 
@@ -40,6 +36,8 @@ public class Quiz extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quiz);
 
+        startActivity(new Intent(getApplicationContext(), Video.class));
+
         answer1 = findViewById(R.id.answer1);
         answer2 = findViewById(R.id.answer2);
         answer3 = findViewById(R.id.answer3);
@@ -47,15 +45,7 @@ public class Quiz extends AppCompatActivity {
 
         FirebaseDatabase.getInstance().setPersistenceEnabled(true);
 
-        storage = FirebaseStorage.getInstance();
         database = FirebaseDatabase.getInstance();
-
-//        str = "Firebase";
-//
-//        VideoView videoview = findViewById(R.id.videoview);
-//        uri = Uri.parse(str);
-//        videoview.setVideoURI(uri);
-//        videoview.start();
 
         score = findViewById(R.id.score);
         question = findViewById(R.id.question);
