@@ -1,5 +1,6 @@
 package com.husseinelkheshen.elgayza;
 
+import android.media.MediaPlayer;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -28,6 +29,11 @@ public class Video extends AppCompatActivity {
         video.setVideoURI(uri);
         video.start();
 
+        video.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+            public void onCompletion(MediaPlayer mp) {
+                finish(); // finish current activity
+            }
+        });
 
     }
 
