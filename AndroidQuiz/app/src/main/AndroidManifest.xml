@@ -22,7 +22,8 @@
         <activity android:name=".Quiz" />
         <activity android:name=".Menu" />
         <activity android:name=".Login" />
-        <activity android:name=".Video"></activity>
+        <activity android:name=".Video" />
+        <activity android:name=".Verify"></activity>
     </application>
 
 </manifest>
