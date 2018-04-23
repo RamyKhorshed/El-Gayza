@@ -48,6 +48,7 @@ public class Register extends AppCompatActivity {
                 if (v == login){
                     startActivity(new Intent(getApplicationContext(),
                             Login.class));
+                    finish();
                 }
             }
         });

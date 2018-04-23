@@ -51,6 +51,7 @@ public class Login extends AppCompatActivity {
                 if (v == back){
                     startActivity(new Intent(getApplicationContext(),
                             Register.class));
+                    finish();
                 }
             }
         });
