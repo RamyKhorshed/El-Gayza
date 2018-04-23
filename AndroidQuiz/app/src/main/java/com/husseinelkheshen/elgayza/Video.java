@@ -31,7 +31,7 @@ public class Video extends AppCompatActivity {
 
         video.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
             public void onCompletion(MediaPlayer mp) {
-                finish(); // finish current activity
+                finish();
             }
         });
 

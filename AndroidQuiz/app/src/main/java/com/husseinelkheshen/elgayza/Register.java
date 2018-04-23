@@ -48,6 +48,7 @@ public class Register extends AppCompatActivity {
                 if (v == login){
                     startActivity(new Intent(getApplicationContext(),
                             Login.class));
+                    finish();
                 }
             }
         });
@@ -75,7 +76,7 @@ public class Register extends AppCompatActivity {
                                 Toast.makeText(Register.this, "registration successful",
                                         Toast.LENGTH_SHORT).show();
                                 finish();
-                                startActivity(new Intent(getApplicationContext(), Menu.class));
+                                startActivity(new Intent(getApplicationContext(), Verify.class));
                             } else {
                                 Toast.makeText(Register.this, "Couldn't register, try again",
                                         Toast.LENGTH_SHORT).show();

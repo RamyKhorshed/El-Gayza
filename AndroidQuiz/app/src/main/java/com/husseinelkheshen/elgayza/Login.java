@@ -51,6 +51,7 @@ public class Login extends AppCompatActivity {
                 if (v == back){
                     startActivity(new Intent(getApplicationContext(),
                             Register.class));
+                    finish();
                 }
             }
         });
@@ -77,8 +78,14 @@ public class Login extends AppCompatActivity {
                         if (task.isSuccessful()){
                             currentUser = mAuth.getCurrentUser();
                             finish();
-                            startActivity(new Intent(getApplicationContext(),
-                                    Menu.class));
+                            if (currentUser.isEmailVerified()) {
+                                startActivity(new Intent(getApplicationContext(),
+                                        Menu.class));
+                            }
+                            else {
+                                startActivity(new Intent(getApplicationContext(),
+                                        Verify.class));
+                            }
                         }else {
                             Toast.makeText(Login.this, "Authentication Failed",
                                     Toast.LENGTH_SHORT).show();
