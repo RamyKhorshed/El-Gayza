@@ -1,4 +1,5 @@
 <resources>
+    <string name="facebook_app_id">200198550767806</string>
     <string name="app_name">El Gayza</string>
     <string name="quiz_game">Quiz Game</string>
     <string name="description">Description</string>
