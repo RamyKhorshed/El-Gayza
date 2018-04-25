@@ -168,23 +168,27 @@ public class Quiz extends AppCompatActivity {
     }
 
     private void gameOver() {
-        AlertDialog.Builder aDB = new AlertDialog.Builder(Quiz.this);
-        aDB
-                .setMessage("Game Over! Your score is " + mScore + " points!")
-                .setCancelable(false)
-                .setPositiveButton("NEW GAME",
-                        new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                startActivity(new Intent(getApplicationContext(), Menu.class));
-                            }
-                        })
-                .setNegativeButton("EXIT",
-                        new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                finish();
-                            }
-                        });
+//        AlertDialog.Builder aDB = new AlertDialog.Builder(Quiz.this);
+//        aDB
+//                .setMessage("Game Over! Your score is " + mScore + " points!")
+//                .setCancelable(false)
+//                .setPositiveButton("NEW GAME",
+//                        new DialogInterface.OnClickListener() {
+//                            @Override
+//                            public void onClick(DialogInterface dialog, int which) {
+//                                startActivity(new Intent(getApplicationContext(), Menu.class));
+//                            }
+//                        })
+//                .setNegativeButton("EXIT",
+//                        new DialogInterface.OnClickListener() {
+//                            @Override
+//                            public void onClick(DialogInterface dialog, int which) {
+//                                finish();
+//                            }
+//                        });
+//        aDB.create();
+//        aDB.show();
+        startActivity(new Intent(getApplicationContext(), Menu.class));
+        finish();
     }
 }
