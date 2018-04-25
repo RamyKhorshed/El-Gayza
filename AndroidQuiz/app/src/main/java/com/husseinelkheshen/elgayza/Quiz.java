@@ -10,14 +10,19 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class Quiz extends AppCompatActivity {
 
     Button answer1, answer2, answer3, answer4;
 
     TextView score, question;
+
+    String Q1;
 
     private Questions  qObject = new Questions();
 
@@ -41,20 +46,30 @@ public class Quiz extends AppCompatActivity {
         answer3 = findViewById(R.id.answer3);
         answer4 = findViewById(R.id.answer4);
 
-        FirebaseDatabase.getInstance().setPersistenceEnabled(true);
-
-        mDatabase = FirebaseDatabase.getInstance().getReference("example");
-
         score = findViewById(R.id.score);
         question = findViewById(R.id.question);
 
         updateQuestion(n++);
 
-        question.setText(R.string.app_name);
+        mDatabase = FirebaseDatabase.getInstance().getReference().child("questions");
 
-        String Q1 = mDatabase.getKey();
+        mDatabase.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for(DataSnapshot ds : dataSnapshot.getChildren()){
+                    for(DataSnapshot qs : ds.child("solutions").getChildren()){
+                        Q1 = qs.getValue().toString();
 
-        question.setText(Q1);
+                        question.setText(Q1);
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
 
         answer1.setOnClickListener(new View.OnClickListener() {
             @SuppressLint("SetTextI18n")
@@ -128,6 +143,13 @@ public class Quiz extends AppCompatActivity {
             }
         });
     }
+
+//    private void showData(DataSnapshot dataSnapshot) {
+//        FirebaseQ fQ = new FirebaseQ();
+//        fQ.setQuestion(dataSnapshot.child("0").getValue(FirebaseQ.class).getQuestion());
+//
+//        Q1 = fQ.getQuestion();
+//    }
 
     @Override
     public void onBackPressed() {

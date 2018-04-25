@@ -64,7 +64,7 @@
       <file leaf-file-name="Menu.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/husseinelkheshen/elgayza/Menu.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="335">
+            <state relative-caret-position="369">
               <caret line="34" column="44" lean-forward="false" selection-start-line="34" selection-start-column="44" selection-end-line="34" selection-end-column="44" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -81,22 +81,25 @@
       <file leaf-file-name="Quiz.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/husseinelkheshen/elgayza/Quiz.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="528">
-              <caret line="57" column="0" lean-forward="false" selection-start-line="57" selection-start-column="0" selection-end-line="57" selection-end-column="0" />
+            <state relative-caret-position="372">
+              <caret line="62" column="45" lean-forward="false" selection-start-line="62" selection-start-column="45" selection-end-line="62" selection-end-column="45" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#1521#1538#0" expanded="true" />
+                <element signature="e#2221#2769#0" expanded="true" />
+                <element signature="e#2768#2769#0" expanded="true" />
+                <element signature="e#2808#3356#0" expanded="true" />
+                <element signature="e#3355#3356#0" expanded="true" />
+                <element signature="e#3395#3943#0" expanded="true" />
+                <element signature="e#3942#3943#0" expanded="true" />
+                <element signature="e#3982#4530#0" expanded="true" />
+                <element signature="e#4529#4530#0" expanded="true" />
+                <element signature="e#4821#4822#0" expanded="true" />
+                <element signature="e#4843#4844#0" expanded="true" />
+                <element signature="e#5479#5793#0" expanded="true" />
+                <element signature="e#5792#5793#0" expanded="true" />
+                <element signature="e#5862#6122#0" expanded="true" />
+                <element signature="e#6121#6122#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Questions.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/husseinelkheshen/elgayza/Questions.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-412">
-              <caret line="2" column="13" lean-forward="false" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -2183,6 +2186,7 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/husseinelkheshen/elgayza/Register.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/husseinelkheshen/elgayza/Menu.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_menu.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/husseinelkheshen/elgayza/FirebaseQ.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/husseinelkheshen/elgayza/Quiz.java" />
       </list>
     </option>
@@ -2270,7 +2274,7 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="android.project.structure.last.selected" value="app" />
     <property name="android.project.structure.proportion" value="0.15" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1524688359932" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1524692872708" />
   </component>
   <component name="RecentsManager">
     <key name="android.template.packageName">
@@ -2718,13 +2722,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/husseinelkheshen/elgayza/Quiz.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="28" column="18" lean-forward="false" selection-start-line="28" selection-start-column="18" selection-end-line="28" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_menu.xml">
       <provider editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -3111,14 +3108,6 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/husseinelkheshen/elgayza/Questions.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-412">
-          <caret line="2" column="13" lean-forward="false" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/husseinelkheshen/elgayza/Register.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="165">
@@ -3127,9 +3116,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/husseinelkheshen/elgayza/Questions.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="13" lean-forward="false" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/husseinelkheshen/elgayza/Menu.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="335">
+        <state relative-caret-position="369">
           <caret line="34" column="44" lean-forward="false" selection-start-line="34" selection-start-column="44" selection-end-line="34" selection-end-column="44" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -3142,13 +3139,39 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/husseinelkheshen/elgayza/FirebaseQ.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" column="0" lean-forward="true" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+          <folding>
+            <element signature="e#159#160#0" expanded="false" />
+            <element signature="e#190#191#0" expanded="false" />
+            <element signature="e#238#239#0" expanded="false" />
+            <element signature="e#278#279#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/husseinelkheshen/elgayza/Quiz.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="528">
-          <caret line="57" column="0" lean-forward="false" selection-start-line="57" selection-start-column="0" selection-end-line="57" selection-end-column="0" />
+        <state relative-caret-position="372">
+          <caret line="62" column="45" lean-forward="false" selection-start-line="62" selection-start-column="45" selection-end-line="62" selection-end-column="45" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1521#1538#0" expanded="true" />
+            <element signature="e#2221#2769#0" expanded="true" />
+            <element signature="e#2768#2769#0" expanded="true" />
+            <element signature="e#2808#3356#0" expanded="true" />
+            <element signature="e#3355#3356#0" expanded="true" />
+            <element signature="e#3395#3943#0" expanded="true" />
+            <element signature="e#3942#3943#0" expanded="true" />
+            <element signature="e#3982#4530#0" expanded="true" />
+            <element signature="e#4529#4530#0" expanded="true" />
+            <element signature="e#4821#4822#0" expanded="true" />
+            <element signature="e#4843#4844#0" expanded="true" />
+            <element signature="e#5479#5793#0" expanded="true" />
+            <element signature="e#5792#5793#0" expanded="true" />
+            <element signature="e#5862#6122#0" expanded="true" />
+            <element signature="e#6121#6122#0" expanded="true" />
           </folding>
         </state>
       </provider>
