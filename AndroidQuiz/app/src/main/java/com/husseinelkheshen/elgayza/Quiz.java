@@ -3,17 +3,15 @@ package com.husseinelkheshen.elgayza;
 import android.annotation.SuppressLint;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.net.Uri;
+import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.VideoView;
 
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.storage.FirebaseStorage;
 
 public class Quiz extends AppCompatActivity {
 
@@ -27,7 +25,7 @@ public class Quiz extends AppCompatActivity {
     private int mScore = 0;
     private int qLength = qObject.getLength();
 
-    private FirebaseDatabase database;
+    private DatabaseReference mDatabase;
 
     int n = 0;
 
@@ -45,12 +43,18 @@ public class Quiz extends AppCompatActivity {
 
         FirebaseDatabase.getInstance().setPersistenceEnabled(true);
 
-        database = FirebaseDatabase.getInstance();
+        mDatabase = FirebaseDatabase.getInstance().getReference("example");
 
         score = findViewById(R.id.score);
         question = findViewById(R.id.question);
 
         updateQuestion(n++);
+
+        question.setText(R.string.app_name);
+
+        String Q1 = mDatabase.getKey();
+
+        question.setText(Q1);
 
         answer1.setOnClickListener(new View.OnClickListener() {
             @SuppressLint("SetTextI18n")
