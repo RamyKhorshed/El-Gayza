@@ -188,7 +188,5 @@ public class Quiz extends AppCompatActivity {
 //                        });
 //        aDB.create();
 //        aDB.show();
-        startActivity(new Intent(getApplicationContext(), Menu.class));
-        finish();
     }
 }
