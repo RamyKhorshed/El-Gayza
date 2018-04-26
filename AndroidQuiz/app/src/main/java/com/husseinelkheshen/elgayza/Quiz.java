@@ -16,6 +16,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
+
 public class Quiz extends AppCompatActivity {
 
     Button answer1, answer2, answer3, answer4;
@@ -31,6 +33,8 @@ public class Quiz extends AppCompatActivity {
     private int qLength = qObject.getLength();
 
     private DatabaseReference mDatabase;
+
+    ArrayList<String> dateOfIssue = new ArrayList<>();
 
     int n = 0;
 
@@ -50,6 +54,8 @@ public class Quiz extends AppCompatActivity {
         question = findViewById(R.id.question);
 
         updateQuestion(n++);
+
+        FirebaseDatabase.getInstance().setPersistenceEnabled(true);
 
         mDatabase = FirebaseDatabase.getInstance().getReference().child("questions");
 
