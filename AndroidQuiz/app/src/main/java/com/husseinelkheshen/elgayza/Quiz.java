@@ -34,7 +34,7 @@ public class Quiz extends AppCompatActivity {
 
     private DatabaseReference mDatabase;
 
-    ArrayList<String> dateOfIssue = new ArrayList<>();
+    ArrayList<String> q = new ArrayList<>();
 
     int n = 0;
 
@@ -65,6 +65,8 @@ public class Quiz extends AppCompatActivity {
                 for(DataSnapshot ds : dataSnapshot.getChildren()){
                     for(DataSnapshot qs : ds.child("solutions").getChildren()){
                         Q1 = qs.getValue().toString();
+
+                        q.add(Q1);
 
                         question.setText(Q1);
                     }
