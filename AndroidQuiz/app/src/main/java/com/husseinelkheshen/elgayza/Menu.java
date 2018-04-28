@@ -40,8 +40,8 @@ public class Menu extends AppCompatActivity {
 
         quitButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                mAuth.getInstance().signOut();
-                LoginManager.getInstance().logOut();
+//                mAuth.getInstance().signOut();
+//                LoginManager.getInstance().logOut();
                 finish();
             }
         });
