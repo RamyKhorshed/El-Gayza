@@ -69,14 +69,13 @@ public class Quiz extends AppCompatActivity {
         qDatabase = FirebaseDatabase.getInstance().getReference().child("questions");
         uDatabase = FirebaseDatabase.getInstance().getReference().child("users");
 
-        getAnswers(0);
-        getQuestion(0);
+        getQuestion(1);
 
         answer1.setOnClickListener(new View.OnClickListener() {
             @SuppressLint("SetTextI18n")
             @Override
             public void onClick(View v) {
-                submitAnswer(UID, 0,answer1.getText().toString());
+                submitAnswer(UID, n,answer1.getText().toString());
                 disableButtons();
 
                 if (answer1.getText() == mAnswer) {
@@ -97,7 +96,7 @@ public class Quiz extends AppCompatActivity {
             @SuppressLint("SetTextI18n")
             @Override
             public void onClick(View v) {
-                submitAnswer(UID, 0,answer2.getText().toString());
+                submitAnswer(UID, n,answer2.getText().toString());
                 disableButtons();
 
                 if (answer2.getText() == mAnswer) {
@@ -118,7 +117,7 @@ public class Quiz extends AppCompatActivity {
             @SuppressLint("SetTextI18n")
             @Override
             public void onClick(View v) {
-                submitAnswer(UID, 0,answer3.getText().toString());
+                submitAnswer(UID, n,answer3.getText().toString());
                 disableButtons();
 
                 if (answer3.getText() == mAnswer) {
@@ -139,7 +138,7 @@ public class Quiz extends AppCompatActivity {
             @SuppressLint("SetTextI18n")
             @Override
             public void onClick(View v) {
-                submitAnswer(UID, 0,answer4.getText().toString());
+                submitAnswer(UID, n,answer4.getText().toString());
                 disableButtons();
 
                 if (answer4.getText() == mAnswer) {
@@ -196,37 +195,35 @@ public class Quiz extends AppCompatActivity {
 //        aDB.show();
     }
 
-    private void getAnswers(int n) {
-        qDatabase.child(Integer.toString(n)).child("solutions").
-                addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                Q1 = dataSnapshot.child("0").getValue().toString();
-                answer1.setText(Q1);
-
-                Q2 = dataSnapshot.child("1").getValue().toString();
-                answer2.setText(Q2);
-
-                Q3 = dataSnapshot.child("2").getValue().toString();
-                answer3.setText(Q3);
-
-                Q4 = dataSnapshot.child("3").getValue().toString();
-                answer4.setText(Q4);
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
-    }
-
     private void getQuestion(int n) {
         qDatabase.child(Integer.toString(n)).addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
                         Q = dataSnapshot.child("question").getValue().toString();
                         question.setText(Q);
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+
+                    }
+                });
+
+        qDatabase.child(Integer.toString(n)).child("solutions").
+                addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        Q1 = dataSnapshot.child("0").getValue().toString();
+                        answer1.setText(Q1);
+
+                        Q2 = dataSnapshot.child("1").getValue().toString();
+                        answer2.setText(Q2);
+
+                        Q3 = dataSnapshot.child("2").getValue().toString();
+                        answer3.setText(Q3);
+
+                        Q4 = dataSnapshot.child("3").getValue().toString();
+                        answer4.setText(Q4);
                     }
 
                     @Override
