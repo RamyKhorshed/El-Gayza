@@ -22,7 +22,7 @@ public class Quiz extends AppCompatActivity {
 
     TextView score, question;
 
-    String Q1;
+    String Q1, Q2, Q3, Q4, Q;
 
     private Questions  qObject = new Questions();
 
@@ -30,7 +30,7 @@ public class Quiz extends AppCompatActivity {
     private int mScore = 0;
     private int qLength = qObject.getLength();
 
-    private DatabaseReference mDatabase;
+    private DatabaseReference qDatabase;
 
     int n = 0;
 
@@ -51,25 +51,12 @@ public class Quiz extends AppCompatActivity {
 
         updateQuestion(n++);
 
-        mDatabase = FirebaseDatabase.getInstance().getReference().child("questions");
+        FirebaseDatabase.getInstance().setPersistenceEnabled(true);
 
-        mDatabase.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                for(DataSnapshot ds : dataSnapshot.getChildren()){
-                    for(DataSnapshot qs : ds.child("solutions").getChildren()){
-                        Q1 = qs.getValue().toString();
+        qDatabase = FirebaseDatabase.getInstance().getReference().child("questions");
 
-                        question.setText(Q1);
-                    }
-                }
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
+        getAnswers(0);
+        getQuestion(0);
 
         answer1.setOnClickListener(new View.OnClickListener() {
             @SuppressLint("SetTextI18n")
@@ -188,5 +175,45 @@ public class Quiz extends AppCompatActivity {
 //                        });
 //        aDB.create();
 //        aDB.show();
+    }
+
+    private void getAnswers(int n) {
+        qDatabase.child(Integer.toString(n)).child("solutions").
+                addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                Q1 = dataSnapshot.child("0").getValue().toString();
+                answer1.setText(Q1);
+
+                Q2 = dataSnapshot.child("1").getValue().toString();
+                answer2.setText(Q2);
+
+                Q3 = dataSnapshot.child("2").getValue().toString();
+                answer3.setText(Q3);
+
+                Q4 = dataSnapshot.child("3").getValue().toString();
+                answer4.setText(Q4);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+    }
+
+    private void getQuestion(int n) {
+        qDatabase.child(Integer.toString(n)).addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        Q = dataSnapshot.child("question").getValue().toString();
+                        question.setText(Q);
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+
+                    }
+                });
     }
 }
