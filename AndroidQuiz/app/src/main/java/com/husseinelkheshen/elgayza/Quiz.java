@@ -38,7 +38,7 @@ public class Quiz extends AppCompatActivity {
     private int mScore = 0;
     private int qLength = qObject.getLength();
 
-    private DatabaseReference qDatabase;
+    private DatabaseReference qDatabase, uDatabase;
 
     int n = 0;
 
@@ -67,6 +67,7 @@ public class Quiz extends AppCompatActivity {
         FirebaseDatabase.getInstance().setPersistenceEnabled(true);
 
         qDatabase = FirebaseDatabase.getInstance().getReference().child("questions");
+        uDatabase = FirebaseDatabase.getInstance().getReference().child("users");
 
         getAnswers(0);
         getQuestion(0);
@@ -75,6 +76,9 @@ public class Quiz extends AppCompatActivity {
             @SuppressLint("SetTextI18n")
             @Override
             public void onClick(View v) {
+                submitAnswer(UID, 0,answer1.getText().toString());
+                disableButtons();
+
                 if (answer1.getText() == mAnswer) {
                     mScore++;
                     score.setText(Integer.toString(mScore));
@@ -93,6 +97,9 @@ public class Quiz extends AppCompatActivity {
             @SuppressLint("SetTextI18n")
             @Override
             public void onClick(View v) {
+                submitAnswer(UID, 0,answer2.getText().toString());
+                disableButtons();
+
                 if (answer2.getText() == mAnswer) {
                     mScore++;
                     score.setText(Integer.toString(mScore));
@@ -111,6 +118,9 @@ public class Quiz extends AppCompatActivity {
             @SuppressLint("SetTextI18n")
             @Override
             public void onClick(View v) {
+                submitAnswer(UID, 0,answer3.getText().toString());
+                disableButtons();
+
                 if (answer3.getText() == mAnswer) {
                     mScore++;
                     score.setText(Integer.toString(mScore));
@@ -129,6 +139,9 @@ public class Quiz extends AppCompatActivity {
             @SuppressLint("SetTextI18n")
             @Override
             public void onClick(View v) {
+                submitAnswer(UID, 0,answer4.getText().toString());
+                disableButtons();
+
                 if (answer4.getText() == mAnswer) {
                     mScore++;
                     score.setText(Integer.toString(mScore));
@@ -221,5 +234,16 @@ public class Quiz extends AppCompatActivity {
 
                     }
                 });
+    }
+
+    private void submitAnswer(String userId, int n, String answer) {
+        uDatabase.child(userId).child(Integer.toString(n)).setValue(answer);
+    }
+
+    private void disableButtons() {
+        answer1.setEnabled(false);
+        answer2.setEnabled(false);
+        answer3.setEnabled(false);
+        answer4.setEnabled(false);
     }
 }
