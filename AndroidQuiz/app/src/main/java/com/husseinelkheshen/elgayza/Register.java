@@ -74,7 +74,7 @@ public class Register extends AppCompatActivity {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 FirebaseUser user = firebaseAuth.getCurrentUser();
-                if(user != null){
+                if(user != null || mAuth.getCurrentUser() != null){
                     startActivity(new Intent(getApplicationContext(),
                             Menu.class));
                     finish();
