@@ -1,10 +1,7 @@
 package com.husseinelkheshen.elgayza;
 
 import android.annotation.SuppressLint;
-import android.content.DialogInterface;
-import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
@@ -19,10 +16,10 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ServerValue;
 import com.google.firebase.database.ValueEventListener;
 
-public class Quiz extends AppCompatActivity {
+import java.text.DateFormat;
+import java.util.Date;
 
-    private FirebaseAuth mAuth;
-    private FirebaseUser currentUser;
+public class Quiz extends AppCompatActivity {
 
     String UID;
 
@@ -38,7 +35,9 @@ public class Quiz extends AppCompatActivity {
     private int mScore = 0;
     private int qLength = qObject.getLength();
 
-    private DatabaseReference qDatabase, uDatabase;
+    private DatabaseReference qDatabase;
+    private DatabaseReference uDatabase;
+    private DatabaseReference activityDB;
 
     int n = 0;
 
@@ -47,12 +46,14 @@ public class Quiz extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quiz);
 
-        startActivity(new Intent(getApplicationContext(), Video.class));
+//        startActivity(new Intent(getApplicationContext(), Video.class));
 
-        mAuth = FirebaseAuth.getInstance();
-        currentUser = mAuth.getCurrentUser();
+        FirebaseAuth mAuth = FirebaseAuth.getInstance();
+        FirebaseUser currentUser = mAuth.getCurrentUser();
 
-        UID = currentUser.getUid();
+        if(currentUser != null) {
+            UID = currentUser.getUid();
+        }
         
         answer1 = findViewById(R.id.answer1);
         answer2 = findViewById(R.id.answer2);
@@ -66,8 +67,17 @@ public class Quiz extends AppCompatActivity {
 
         FirebaseDatabase.getInstance().setPersistenceEnabled(true);
 
-        qDatabase = FirebaseDatabase.getInstance().getReference().child("questions");
-        uDatabase = FirebaseDatabase.getInstance().getReference().child("users");
+        DatabaseReference root = FirebaseDatabase.getInstance().getReference();
+        qDatabase = root.child("20180428").child("questions");
+        uDatabase = root.child("20180428").child("users");
+        activityDB = root.child("activity");
+
+        activityDB.child(UID).setValue(ServerValue.TIMESTAMP, new DatabaseReference.CompletionListener() {
+                    @Override
+                    public void onComplete(DatabaseError databaseError, DatabaseReference databaseReference) {
+                        getDate(UID);
+                    }
+                });
 
         getQuestion(1);
 
@@ -158,7 +168,7 @@ public class Quiz extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        return;
+
     }
 
     private void updateQuestion(int n) {
@@ -235,6 +245,24 @@ public class Quiz extends AppCompatActivity {
 
     private void submitAnswer(String userId, int n, String answer) {
         uDatabase.child(userId).child(Integer.toString(n)).setValue(answer);
+    }
+
+    private void getDate(String UID) {
+        activityDB.child(UID).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                String dateObj = dataSnapshot.getValue().toString();
+                long date = Long.parseLong(dateObj) + 7200000;
+                String dateString = new Date(date).toString();
+
+                score.setText(dateString);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
     }
 
     private void disableButtons() {
