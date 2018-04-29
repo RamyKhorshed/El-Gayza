@@ -16,8 +16,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ServerValue;
 import com.google.firebase.database.ValueEventListener;
 
-import java.text.DateFormat;
 import java.util.Date;
+import java.text.SimpleDateFormat;
 
 public class Quiz extends AppCompatActivity {
 
@@ -253,7 +253,12 @@ public class Quiz extends AppCompatActivity {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 String dateObj = dataSnapshot.getValue().toString();
                 long date = Long.parseLong(dateObj) + 7200000;
-                String dateString = new Date(date).toString();
+                Date dateFull = new Date(date);
+
+                @SuppressLint("SimpleDateFormat") SimpleDateFormat sdf =
+                        new SimpleDateFormat("yyyy/MM/dd");
+
+                String dateString = sdf.format(dateFull);
 
                 score.setText(dateString);
             }
