@@ -256,11 +256,11 @@ public class Quiz extends AppCompatActivity {
                 Date dateFull = new Date(date);
 
                 @SuppressLint("SimpleDateFormat") SimpleDateFormat sdf =
-                        new SimpleDateFormat("yyyy/MM/dd");
+                        new SimpleDateFormat("yyyyMMdd");
 
                 String dateString = sdf.format(dateFull);
 
-                score.setText(dateString);
+                score.setText(dateFull.toString());
             }
 
             @Override
