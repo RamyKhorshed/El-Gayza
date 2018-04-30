@@ -30,11 +30,9 @@ public class Quiz extends AppCompatActivity {
 
     String Q1, Q2, Q3, Q4, Q;
 
-    private Questions  qObject = new Questions();
+    private Questions qObject = new Questions();
 
-    private String mAnswer;
-    private int mScore = 0;
-    private int qLength = qObject.getLength();
+    int qLength;
 
     private DatabaseReference qDatabase;
     private DatabaseReference uDatabase;
@@ -52,10 +50,10 @@ public class Quiz extends AppCompatActivity {
         FirebaseAuth mAuth = FirebaseAuth.getInstance();
         FirebaseUser currentUser = mAuth.getCurrentUser();
 
-        if(currentUser != null) {
+        if (currentUser != null) {
             UID = currentUser.getUid();
         }
-        
+
         answer1 = findViewById(R.id.answer1);
         answer2 = findViewById(R.id.answer2);
         answer3 = findViewById(R.id.answer3);
@@ -63,8 +61,6 @@ public class Quiz extends AppCompatActivity {
 
         score = findViewById(R.id.score);
         question = findViewById(R.id.question);
-
-        updateQuestion(n++);
 
         FirebaseDatabase.getInstance().setPersistenceEnabled(true);
 
@@ -74,32 +70,32 @@ public class Quiz extends AppCompatActivity {
         activityDB = root.child("activity");
 
         activityDB.child(UID).setValue(ServerValue.TIMESTAMP, new DatabaseReference.CompletionListener() {
-                    @Override
-                    public void onComplete(DatabaseError databaseError, DatabaseReference databaseReference) {
-                        getDate(UID);
-                    }
-                });
+            @Override
+            public void onComplete(DatabaseError databaseError, DatabaseReference databaseReference) {
+                getDate(UID);
+            }
+        });
 
-        getQuestion(1);
+        qDatabase.child("length").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                qLength = Integer.parseInt(dataSnapshot.getValue().toString());
+                getQuestion(n);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
 
         answer1.setOnClickListener(new View.OnClickListener() {
             @SuppressLint("SetTextI18n")
             @Override
             public void onClick(View v) {
-                submitAnswer(UID, n,answer1.getText().toString());
+                submitAnswer(UID, n++, "0");
                 disableButtons();
-
-                if (answer1.getText() == mAnswer) {
-                    mScore++;
-                    score.setText(Integer.toString(mScore));
-                    updateQuestion(n++);
-                    if(n-1 >= qLength){
-                        gameOver();
-                        finish();
-                    }
-                } else {
-                    gameOver();
-                }
             }
         });
 
@@ -107,20 +103,8 @@ public class Quiz extends AppCompatActivity {
             @SuppressLint("SetTextI18n")
             @Override
             public void onClick(View v) {
-                submitAnswer(UID, n,answer2.getText().toString());
+                submitAnswer(UID, n++, "1");
                 disableButtons();
-
-                if (answer2.getText() == mAnswer) {
-                    mScore++;
-                    score.setText(Integer.toString(mScore));
-                    updateQuestion(n++);
-                    if(n-1 >= qLength){
-                        gameOver();
-                        finish();
-                    }
-                } else {
-                    gameOver();
-                }
             }
         });
 
@@ -128,20 +112,8 @@ public class Quiz extends AppCompatActivity {
             @SuppressLint("SetTextI18n")
             @Override
             public void onClick(View v) {
-                submitAnswer(UID, n,answer3.getText().toString());
+                submitAnswer(UID, n++, "2");
                 disableButtons();
-
-                if (answer3.getText() == mAnswer) {
-                    mScore++;
-                    score.setText(Integer.toString(mScore));
-                    updateQuestion(n++);
-                    if(n-1 >= qLength){
-                        gameOver();
-                        finish();
-                    }
-                } else {
-                    gameOver();
-                }
             }
         });
 
@@ -149,20 +121,8 @@ public class Quiz extends AppCompatActivity {
             @SuppressLint("SetTextI18n")
             @Override
             public void onClick(View v) {
-                submitAnswer(UID, n,answer4.getText().toString());
+                submitAnswer(UID, n++, "3");
                 disableButtons();
-
-                if (answer4.getText() == mAnswer) {
-                    mScore++;
-                    score.setText(Integer.toString(mScore));
-                    updateQuestion(n++);
-                    if(n-1 >= qLength){
-                        gameOver();
-                        finish();
-                    }
-                } else {
-                    gameOver();
-                }
             }
         });
     }
@@ -180,7 +140,6 @@ public class Quiz extends AppCompatActivity {
         answer3.setText(qObject.getChoice3(n));
         answer4.setText(qObject.getChoice4(n));
 
-        mAnswer = qObject.getCorrect(n);
     }
 
     private void gameOver() {
@@ -208,17 +167,17 @@ public class Quiz extends AppCompatActivity {
 
     private void getQuestion(int n) {
         qDatabase.child(Integer.toString(n)).addListenerForSingleValueEvent(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(DataSnapshot dataSnapshot) {
-                        Q = dataSnapshot.child("question").getValue().toString();
-                        question.setText(Q);
-                    }
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                Q = dataSnapshot.child("question").getValue().toString();
+                question.setText(Q);
+            }
 
-                    @Override
-                    public void onCancelled(DatabaseError databaseError) {
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
 
-                    }
-                });
+            }
+        });
 
         qDatabase.child(Integer.toString(n)).child("solutions").
                 addListenerForSingleValueEvent(new ValueEventListener() {
@@ -244,8 +203,40 @@ public class Quiz extends AppCompatActivity {
                 });
     }
 
-    private void submitAnswer(String userId, int n, String answer) {
-        uDatabase.child(userId).child(Integer.toString(n)).setValue(answer);
+    private void submitAnswer(String userId, final int n, final String answer) {
+        uDatabase.child(userId).child(Integer.toString(n)).setValue(answer,
+                new DatabaseReference.CompletionListener() {
+            @Override
+            public void onComplete(DatabaseError databaseError, DatabaseReference databaseReference) {
+                checkAnswer(n, answer);
+            }
+        });
+    }
+
+    private void checkAnswer(final int n, final String answer) {
+        qDatabase.child(Integer.toString(n)).child("solution")
+                .addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                if(dataSnapshot.getValue().toString() == answer) {
+                    enableButtons();
+                }
+
+                int q = n+1;
+
+                if(q < 2) {
+                    getQuestion(q);
+                }
+                else {
+                    finish();
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
     }
 
     private void getDate(String UID) {
