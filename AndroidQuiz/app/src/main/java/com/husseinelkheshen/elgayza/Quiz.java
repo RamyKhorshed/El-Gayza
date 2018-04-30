@@ -1,6 +1,7 @@
 package com.husseinelkheshen.elgayza;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -260,7 +261,7 @@ public class Quiz extends AppCompatActivity {
 
                 String dateString = sdf.format(dateFull);
 
-                score.setText(dateFull.toString());
+                score.setText(dateString);
             }
 
             @Override
@@ -275,5 +276,12 @@ public class Quiz extends AppCompatActivity {
         answer2.setEnabled(false);
         answer3.setEnabled(false);
         answer4.setEnabled(false);
+    }
+
+    private void enableButtons() {
+        answer1.setEnabled(true);
+        answer2.setEnabled(true);
+        answer3.setEnabled(true);
+        answer4.setEnabled(true);
     }
 }
