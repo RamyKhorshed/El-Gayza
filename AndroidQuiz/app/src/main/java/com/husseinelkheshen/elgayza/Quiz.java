@@ -92,8 +92,8 @@ public class Quiz extends AppCompatActivity {
             @SuppressLint("SetTextI18n")
             @Override
             public void onClick(View v) {
-                submitAnswer(UID, n++, "0");
                 disableButtons();
+                submitAnswer(UID, n++, "0");
             }
         });
 
@@ -101,8 +101,8 @@ public class Quiz extends AppCompatActivity {
             @SuppressLint("SetTextI18n")
             @Override
             public void onClick(View v) {
-                submitAnswer(UID, n++, "1");
                 disableButtons();
+                submitAnswer(UID, n++, "1");
             }
         });
 
@@ -110,8 +110,8 @@ public class Quiz extends AppCompatActivity {
             @SuppressLint("SetTextI18n")
             @Override
             public void onClick(View v) {
-                submitAnswer(UID, n++, "2");
                 disableButtons();
+                submitAnswer(UID, n++, "2");
             }
         });
 
@@ -119,8 +119,8 @@ public class Quiz extends AppCompatActivity {
             @SuppressLint("SetTextI18n")
             @Override
             public void onClick(View v) {
-                submitAnswer(UID, n++, "3");
                 disableButtons();
+                submitAnswer(UID, n++, "3");
             }
         });
     }
@@ -191,22 +191,24 @@ public class Quiz extends AppCompatActivity {
                 });
     }
 
-    private void submitAnswer(String userId, final int n, final String answer) {
+    private void submitAnswer(final String userId, final int n, final String answer) {
         uDatabase.child(userId).child(Integer.toString(n)).setValue(answer,
                 new DatabaseReference.CompletionListener() {
             @Override
             public void onComplete(DatabaseError databaseError, DatabaseReference databaseReference) {
-                checkAnswer(n, answer);
+                checkAnswer(n, answer, userId);
             }
         });
     }
 
-    private void checkAnswer(final int n, final String answer) {
-        qDatabase.child(Integer.toString(n)).child("solution")
+    private void checkAnswer(final int n, final String answer, final String UID) {
+        qDatabase.child(Integer.toString(n)).child("correct")
                 .addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                if(dataSnapshot.getValue().toString() == answer) {
+                String solution = dataSnapshot.getValue().toString();
+
+                if (answer.equals(solution)) {
                     enableButtons();
                 }
 
