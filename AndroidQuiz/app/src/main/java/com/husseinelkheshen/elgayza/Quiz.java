@@ -30,8 +30,6 @@ public class Quiz extends AppCompatActivity {
 
     String Q1, Q2, Q3, Q4, Q;
 
-    private Questions qObject = new Questions();
-
     int qLength;
 
     private DatabaseReference qDatabase;
@@ -129,16 +127,6 @@ public class Quiz extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-
-    }
-
-    private void updateQuestion(int n) {
-        question.setText(qObject.getQuestion(n));
-
-        answer1.setText(qObject.getChoice1(n));
-        answer2.setText(qObject.getChoice2(n));
-        answer3.setText(qObject.getChoice3(n));
-        answer4.setText(qObject.getChoice4(n));
 
     }
 
