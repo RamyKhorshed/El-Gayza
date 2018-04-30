@@ -76,11 +76,13 @@
       <file leaf-file-name="Timer.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/husseinelkheshen/elgayza/Timer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="178">
-              <caret line="96" column="53" lean-forward="false" selection-start-line="96" selection-start-column="53" selection-end-line="96" selection-end-column="53" />
+            <state relative-caret-position="147">
+              <caret line="93" column="30" lean-forward="false" selection-start-line="93" selection-start-column="30" selection-end-line="93" selection-end-column="30" />
               <folding>
-                <element signature="e#1229#1429#0" expanded="true" />
-                <element signature="e#1428#1429#0" expanded="true" />
+                <element signature="e#1256#1456#0" expanded="true" />
+                <element signature="e#1455#1456#0" expanded="true" />
+                <element signature="e#3080#3231#0" expanded="true" />
+                <element signature="e#3230#3231#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -2328,7 +2330,7 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="android.project.structure.last.selected" value="app" />
     <property name="android.project.structure.proportion" value="0.15" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1525128811864" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1525129365822" />
   </component>
   <component name="RecentsManager">
     <key name="android.template.packageName">
@@ -3159,11 +3161,13 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/husseinelkheshen/elgayza/Timer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="178">
-          <caret line="96" column="53" lean-forward="false" selection-start-line="96" selection-start-column="53" selection-end-line="96" selection-end-column="53" />
+        <state relative-caret-position="147">
+          <caret line="93" column="30" lean-forward="false" selection-start-line="93" selection-start-column="30" selection-end-line="93" selection-end-column="30" />
           <folding>
-            <element signature="e#1229#1429#0" expanded="true" />
-            <element signature="e#1428#1429#0" expanded="true" />
+            <element signature="e#1256#1456#0" expanded="true" />
+            <element signature="e#1455#1456#0" expanded="true" />
+            <element signature="e#3080#3231#0" expanded="true" />
+            <element signature="e#3230#3231#0" expanded="true" />
           </folding>
         </state>
       </provider>

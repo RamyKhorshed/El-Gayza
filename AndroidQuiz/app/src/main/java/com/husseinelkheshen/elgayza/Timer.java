@@ -2,6 +2,7 @@ package com.husseinelkheshen.elgayza;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -58,12 +59,7 @@ public class Timer extends AppCompatActivity {
         root = FirebaseDatabase.getInstance().getReference();
         activityDB = root.child("activity");
 
-        activityDB.child(UID).setValue(ServerValue.TIMESTAMP, new DatabaseReference.CompletionListener() {
-            @Override
-            public void onComplete(DatabaseError databaseError, DatabaseReference databaseReference) {
-                getDate(UID);
-            }
-        });
+        logActivity();
     }
 
     private void getDate(String UID) {
@@ -88,18 +84,38 @@ public class Timer extends AppCompatActivity {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 String startObj = dataSnapshot.getValue().toString();
                 startTime = Long.parseLong(startObj);
-                if(date > startTime){
-                    startActivity(new Intent(getApplicationContext(), Quiz.class));
-                }
 
                 Date dateStart = new Date(startTime + 7200000);
 
                 nextTime.setText(dateStart.toString());
+
+                long diff = startTime - date;
+
+                if(diff <= 0){
+                    startActivity(new Intent(getApplicationContext(), Quiz.class));
+                }
+                else{
+                    Handler handler = new Handler();
+                    handler.postDelayed(new Runnable() {
+                        public void run() {
+                            logActivity();
+                        }
+                    }, diff);
+                }
             }
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
 
+            }
+        });
+    }
+
+    private void logActivity() {
+        activityDB.child(UID).setValue(ServerValue.TIMESTAMP, new DatabaseReference.CompletionListener() {
+            @Override
+            public void onComplete(DatabaseError databaseError, DatabaseReference databaseReference) {
+                getDate(UID);
             }
         });
     }
