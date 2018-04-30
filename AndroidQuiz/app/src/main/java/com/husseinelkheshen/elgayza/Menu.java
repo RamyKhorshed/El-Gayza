@@ -51,7 +51,7 @@ public class Menu extends AppCompatActivity {
 
     public void playQuiz()
     {
-        startActivity(new Intent(getApplicationContext(), Quiz.class));
+        startActivity(new Intent(getApplicationContext(), Timer.class));
     }
 
 }
