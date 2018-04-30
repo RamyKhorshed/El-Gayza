@@ -60,8 +60,6 @@ public class Quiz extends AppCompatActivity {
         score = findViewById(R.id.score);
         question = findViewById(R.id.question);
 
-        FirebaseDatabase.getInstance().setPersistenceEnabled(true);
-
         DatabaseReference root = FirebaseDatabase.getInstance().getReference();
         qDatabase = root.child("20180428").child("questions");
         uDatabase = root.child("20180428").child("users");
@@ -196,12 +194,12 @@ public class Quiz extends AppCompatActivity {
                 new DatabaseReference.CompletionListener() {
             @Override
             public void onComplete(DatabaseError databaseError, DatabaseReference databaseReference) {
-                checkAnswer(n, answer, userId);
+                checkAnswer(n, answer);
             }
         });
     }
 
-    private void checkAnswer(final int n, final String answer, final String UID) {
+    private void checkAnswer(final int n, final String answer) {
         qDatabase.child(Integer.toString(n)).child("correct")
                 .addListenerForSingleValueEvent(new ValueEventListener() {
             @Override

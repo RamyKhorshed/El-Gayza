@@ -64,22 +64,22 @@
       <file leaf-file-name="Quiz.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/husseinelkheshen/elgayza/Quiz.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="444">
-              <caret line="210" column="46" lean-forward="true" selection-start-line="210" selection-start-column="46" selection-end-line="210" selection-end-column="46" />
+            <state relative-caret-position="184">
+              <caret line="60" column="47" lean-forward="false" selection-start-line="60" selection-start-column="47" selection-end-line="60" selection-end-column="47" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#2172#2395#0" expanded="true" />
-                <element signature="e#2394#2395#0" expanded="true" />
-                <element signature="e#2859#3095#0" expanded="true" />
-                <element signature="e#3094#3095#0" expanded="true" />
-                <element signature="e#3134#3370#0" expanded="true" />
-                <element signature="e#3369#3370#0" expanded="true" />
-                <element signature="e#3409#3645#0" expanded="true" />
-                <element signature="e#3644#3645#0" expanded="true" />
-                <element signature="e#3684#3920#0" expanded="true" />
-                <element signature="e#3919#3920#0" expanded="true" />
-                <element signature="e#6580#6821#0" expanded="true" />
-                <element signature="e#6820#6821#0" expanded="true" />
+                <element signature="e#2103#2326#0" expanded="true" />
+                <element signature="e#2325#2326#0" expanded="true" />
+                <element signature="e#2790#3026#0" expanded="true" />
+                <element signature="e#3025#3026#0" expanded="true" />
+                <element signature="e#3065#3301#0" expanded="true" />
+                <element signature="e#3300#3301#0" expanded="true" />
+                <element signature="e#3340#3576#0" expanded="true" />
+                <element signature="e#3575#3576#0" expanded="true" />
+                <element signature="e#3615#3851#0" expanded="true" />
+                <element signature="e#3850#3851#0" expanded="true" />
+                <element signature="e#6511#6744#0" expanded="true" />
+                <element signature="e#6743#6744#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -2320,7 +2320,7 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="android.project.structure.last.selected" value="app" />
     <property name="android.project.structure.proportion" value="0.15" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1525117364022" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1525117572446" />
   </component>
   <component name="RecentsManager">
     <key name="android.template.packageName">
@@ -3173,22 +3173,22 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/husseinelkheshen/elgayza/Quiz.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="444">
-          <caret line="210" column="46" lean-forward="true" selection-start-line="210" selection-start-column="46" selection-end-line="210" selection-end-column="46" />
+        <state relative-caret-position="184">
+          <caret line="60" column="47" lean-forward="false" selection-start-line="60" selection-start-column="47" selection-end-line="60" selection-end-column="47" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#2172#2395#0" expanded="true" />
-            <element signature="e#2394#2395#0" expanded="true" />
-            <element signature="e#2859#3095#0" expanded="true" />
-            <element signature="e#3094#3095#0" expanded="true" />
-            <element signature="e#3134#3370#0" expanded="true" />
-            <element signature="e#3369#3370#0" expanded="true" />
-            <element signature="e#3409#3645#0" expanded="true" />
-            <element signature="e#3644#3645#0" expanded="true" />
-            <element signature="e#3684#3920#0" expanded="true" />
-            <element signature="e#3919#3920#0" expanded="true" />
-            <element signature="e#6580#6821#0" expanded="true" />
-            <element signature="e#6820#6821#0" expanded="true" />
+            <element signature="e#2103#2326#0" expanded="true" />
+            <element signature="e#2325#2326#0" expanded="true" />
+            <element signature="e#2790#3026#0" expanded="true" />
+            <element signature="e#3025#3026#0" expanded="true" />
+            <element signature="e#3065#3301#0" expanded="true" />
+            <element signature="e#3300#3301#0" expanded="true" />
+            <element signature="e#3340#3576#0" expanded="true" />
+            <element signature="e#3575#3576#0" expanded="true" />
+            <element signature="e#3615#3851#0" expanded="true" />
+            <element signature="e#3850#3851#0" expanded="true" />
+            <element signature="e#6511#6744#0" expanded="true" />
+            <element signature="e#6743#6744#0" expanded="true" />
           </folding>
         </state>
       </provider>
