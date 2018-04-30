@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -27,12 +28,16 @@ public class Timer extends AppCompatActivity {
 
     Button backButton;
 
+    TextView nextTime;
+
     private DatabaseReference activityDB, root;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_timer);
+
+        nextTime = findViewById(R.id.nextTime);
 
         backButton = findViewById(R.id.back);
 
@@ -86,6 +91,10 @@ public class Timer extends AppCompatActivity {
                 if(date > startTime){
                     startActivity(new Intent(getApplicationContext(), Quiz.class));
                 }
+
+                Date dateStart = new Date(startTime + 7200000);
+
+                nextTime.setText(dateStart.toString());
             }
 
             @Override
