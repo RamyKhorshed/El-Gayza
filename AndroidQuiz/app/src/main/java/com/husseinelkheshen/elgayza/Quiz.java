@@ -212,7 +212,7 @@ public class Quiz extends AppCompatActivity {
 
                 int q = n+1;
 
-                if(q < 2) {
+                if(q < qLength) {
                     getQuestion(q);
                 }
                 else {
